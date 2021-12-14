@@ -16,14 +16,14 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 from rest_framework_swagger.views import get_swagger_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
 ]
 
 if getattr(settings, 'SHOW_API_ROOT', False):
     schema_view = get_swagger_view(title='Baran API')
     urlpatterns.append(path('api/', schema_view))
-

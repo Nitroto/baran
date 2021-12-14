@@ -71,7 +71,7 @@ ROOT_URLCONF = 'baran.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(FRONTEND_BASE_DIR, 'public')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,13 +127,14 @@ USE_L10N = True
 
 USE_TZ = False
 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(FRONTEND_BASE_DIR, 'build/static')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-WHITENOISE_ROOT = os.path.join(FRONTEND_BASE_DIR, 'public')
 
 AUTH_USER_MODEL = 'baran_account.BaranUser'
 USER_SYSTEM_USERNAME = 'baran-system'
