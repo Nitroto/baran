@@ -25,6 +25,7 @@ class Command(BaseCommand):
     file_name = 'employee_data.xlsx'
     DRY_RUN = False
     SALARY_PATTERN = '^(?P<currency>\\w{3})\\s(?P<salary>\\d+)$'
+    DATE_FORMAT = '%d/%m/%Y'
 
     def handle(self, *args, **options):
         with transaction.atomic():
@@ -35,9 +36,7 @@ class Command(BaseCommand):
 
     def import_employees(self):
         file_path = os.path.join(dirname(__file__), 'data', self.file_name)
-        dateparse = lambda x: datetime.strptime(x, '%d/%m/%Y')
-
-        df = pd.read_excel(file_path, header=0, date_parser=dateparse)
+        df = pd.read_excel(file_path, header=0)
 
         valid_data = []
         error = False
@@ -78,6 +77,8 @@ class Command(BaseCommand):
         if not start_date:
             self.stdout.write('Start date is missing')
             return None
+        if not isinstance(start_date, datetime):
+            start_date = datetime.strptime(start_date, self.DATE_FORMAT)
         position = self._get_position(row[COL_POSITION])
         if not position:
             self.stdout.write('Position is missing')

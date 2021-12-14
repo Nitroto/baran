@@ -6,14 +6,13 @@
 
 - [Python 3.9](https://www.python.org/)
 - [Django 2.2.25](https://www.djangoproject.com/)
+- [Django REST Framework 3.13.0](https://www.django-rest-framework.org/)
+- [Django REST Swagger 2.2.0](https://django-rest-swagger.readthedocs.io/)
 
 ### Web
 
-- [Svelte 3](https://svelte.dev/)
+- [Vue 3](https://vuejs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [GraphQL](https://graphql.org/)
-- [rollup.js](https://rollupjs.org/)
-- [Svelte Material UI](https://sveltematerialui.com/)
 
 ## Instructions
 

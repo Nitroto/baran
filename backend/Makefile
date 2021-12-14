@@ -13,7 +13,10 @@ migrate:
 	python manage.py migrate --settings=baran.settings.development
 create-system-user:
 	python manage.py create_system_user
+import-employees-data:
+	python manage.py import_employees_data
+populate-db: migrate create-system-user import-employees-data
 
-install: install-base migrate create-system-user
-install-dev: install-development migrate create-system-user
-install-prod: install-heroku migrate create-system-user
+install: install-base
+install-dev: install-development
+install-prod: install-heroku
