@@ -6,7 +6,6 @@
 
 - [Python 3.9](https://www.python.org/)
 - [Django 2.2.25](https://www.djangoproject.com/)
-- [Django 2.2.25](https://www.djangoproject.com/)
 
 ### Web
 
@@ -20,7 +19,6 @@
 
 ### Set environment variables
 
-- `DATABASE_URL` - For example: `postgres://USER:PASSWORD@HOST:PORT/NAME`
 - `SECRET_KEY` - Create one with:
     ```
     $ python
