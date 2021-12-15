@@ -10,4 +10,35 @@ body {
   cursor: pointer;
 }
 
+.card {
+  width: 350px;
+  background-color: #efefef;
+  border: none;
+  transition: all 0.5s;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.employee-detail {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.employee-id {
+  font-size: 12px;
+}
+
+.join {
+  font-size: 14px;
+  color: #a0a0a0;
+  font-weight: bold;
+}
+
+.date {
+  background-color: #ccc;
+}
+
 /*# sourceMappingURL=base.css.map */

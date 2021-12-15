@@ -10,8 +10,7 @@ class Employee(TimeStampedModel):
         verbose_name_plural = 'Employees'
 
     employee_id = models.CharField(max_length=255, unique=True,
-                                   verbose_name='Employee id',
-                                   editable=False)
+                                   verbose_name='Employee id')
     first_name = models.CharField(max_length=255, verbose_name='First name')
     last_name = models.CharField(max_length=255, verbose_name='Last name')
     mobile = models.CharField(max_length=64, null=True, blank=True,
