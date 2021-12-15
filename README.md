@@ -6,13 +6,6 @@
 
 - [Python 3.9](https://www.python.org/)
 - [Django 2.2.25](https://www.djangoproject.com/)
-- [Django REST Framework 3.13.0](https://www.django-rest-framework.org/)
-- [Django REST Swagger 2.2.0](https://django-rest-swagger.readthedocs.io/)
-
-### Web
-
-- [Vue 3](https://vuejs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
 
 ## Instructions
 
@@ -27,7 +20,6 @@
 - `DEBUG` - Default value False for Development environment should be True
 - `ALLOWED_HOSTS` - add allowed hosts, default is empty
   list. [Django documentation](https://docs.djangoproject.com/en/2.2/ref/settings/#allowed-hosts)
-- `SSL_REQUIRE` - Default value True for Development environment should be False
 
 .env file can be used, put it in settings folder `baran/settings`
 

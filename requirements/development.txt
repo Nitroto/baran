@@ -1,0 +1,7 @@
+-r base.txt
+
+django-environ==0.8.1
+ipython
+factory-boy==3.2.1
+Faker==10.0.0
+flake8==4.0.1

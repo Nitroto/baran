@@ -1,5 +1,0 @@
--r base.txt
-
-factory-boy==3.2.1
-Faker==10.0.0
-flake8==4.0.1

@@ -1,0 +1,33 @@
+{% extends 'private_base.html' %}
+{% block main %}
+    <div class="py-5 text-center">
+        {% if object_list %}
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Start Data</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Employee ID</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for employee in object_list %}
+                    <tr class="clickable" onclick="window.location='{% url 'employee_details' employee.pk %}';">
+                        <td>{{ employee.first_name }}</td>
+                        <td>{{ employee.last_name }}</td>
+                        <td>{{ employee.mobile }}</td>
+                        <td>{{ employee.start_date }}</td>
+                        <td>{{ employee.get_position_display }}</td>
+                        <td>{{ employee.salary_currency }} {{ employee.salary }}</td>
+                        <td>{{ employee.employee_id }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}
