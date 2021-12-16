@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
@@ -18,11 +17,9 @@ class Command(BaseCommand):
                 raise CommandError('DRY RUN')
 
     def create_initial_user(self):
-        BaranUser.objects.ensure_default_system_user()
-        if settings.DEBUG or True:
-            try:
-                BaranUser.objects.get(username='baran')
-            except ObjectDoesNotExist:
-                user = BaranUser.objects.create_superuser('baran')
-                user.set_password('qwerty')
-                user.save()
+        try:
+            BaranUser.objects.get(username='baran')
+        except ObjectDoesNotExist:
+            user = BaranUser.objects.create_superuser('baran')
+            user.set_password('qwerty')
+            user.save()

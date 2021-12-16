@@ -18,7 +18,8 @@ class BaseEmployeeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         for field_name in self.lock_fields:
-            self[field_name].field.disabled = True
+            self.fields[field_name].disabled = True
+            self.fields[field_name].required = False
 
 
 class CreateEmployeeForm(BaseEmployeeForm):
@@ -27,3 +28,6 @@ class CreateEmployeeForm(BaseEmployeeForm):
 
 class UpdateEmployeeForm(BaseEmployeeForm):
     lock_fields = ['employee_id']
+
+    def clean_employee_id(self):
+        return self.instance.employee_id

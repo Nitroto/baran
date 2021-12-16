@@ -1,7 +1,5 @@
-from django.conf import settings
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
-from django.db import models
 
 
 class BaranUserManager(BaseUserManager):
@@ -15,19 +13,6 @@ class BaranUserManager(BaseUserManager):
         user.save()
         return user
 
-    def ensure_default_system_user(self):
-        username = self.get_system_username()
-        default_system_user, _ = self.get_or_create(
-            username=username,
-            defaults={'username': username})
-        return default_system_user
-
-    def get_system_username(self):
-        return getattr(settings, 'USER_SYSTEM_USERNAME', 'default-system')
-
-    def get_system_user(self):
-        return self.get(username=self.get_system_username())
-
     def create_superuser(self, username, password=None):
         user = self.create_user(username, password=password)
         user.is_superuser = True
@@ -38,10 +23,4 @@ class BaranUserManager(BaseUserManager):
 
 
 class BaranUser(AbstractUser):
-    email = models.EmailField(blank=False, max_length=254,
-                              verbose_name="Email address")
-
-    USERNAME_FIELD = "username"
-    EMAIL_FIELD = "email"
-
     objects = BaranUserManager()
