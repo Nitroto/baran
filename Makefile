@@ -10,8 +10,8 @@ install-heroku:
 	pip install -r ./requirements/heroku.txt
 migrate:
 	python manage.py migrate --settings=baran.settings.development
-create-system-user:
-	python manage.py create_system_user
+create-demo-user:
+	python manage.py create_demo_user
 import-employees-data:
 	python manage.py import_employees_data
 populate-db: migrate create-demo-user import-employees-data
