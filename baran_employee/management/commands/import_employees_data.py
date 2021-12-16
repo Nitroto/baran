@@ -57,39 +57,41 @@ class Command(BaseCommand):
         for data in valid_data:
             Employee.objects.create(**data)
 
-    def get_valid_data(self, row):
+    def get_valid_data(self, row) -> {}:
         employee_id = str(row[COL_EMPLOYEE_ID])
         employee = Employee.objects.filter(employee_id=employee_id).first()
         if employee:
             self.stdout.write(f'Employee with employee_id - {employee_id} '
                               f'already exists.')
-            return None
+            return {}
         first_name = row[COL_FIRST_NAME]
         if not first_name:
             self.stdout.write('First name is missing')
-            return None
+            return {}
         last_name = row[COL_LAST_NAME]
         if not last_name:
             self.stdout.write('Last name is missing')
-            return None
+            return {}
         mobile = row[COL_MOBILE]
+        if isinstance(mobile, float):
+            mobile = f'{mobile:.0f}'
         start_date = row[COL_START_DATE]
         if not start_date:
             self.stdout.write('Start date is missing')
-            return None
+            return {}
         if not isinstance(start_date, datetime):
             start_date = datetime.strptime(start_date, self.DATE_FORMAT)
         position = self._get_position(row[COL_POSITION])
         if not position:
             self.stdout.write('Position is missing')
-            return None
+            return {}
 
         salary = row[COL_SALARY]
         regex = re.compile(self.SALARY_PATTERN, re.UNICODE)
         match = regex.match(salary)
         if not match:
             self.stdout.write('Salary is missing or incorrect format')
-            return None
+            return {}
 
         salary_sum = int(match.group('salary'))
         salary_currency = match.group('currency')
@@ -105,6 +107,6 @@ class Command(BaseCommand):
             'salary_currency': salary_currency
         }
 
-    def _get_position(self, position_title):
+    def _get_position(self, position_title) -> int:
         return dict((v, k) for k, v in EmployeePositionChoices.get_choices()) \
             .get(position_title)

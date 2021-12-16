@@ -19,26 +19,7 @@
                                     {% endif %}
                                     {% csrf_token %}
                                     {% for field in form %}
-                                        <div class="form-outline form-white mb-4">
-                                            <input type="{{ field.field.widget.input_type }}"
-                                                   name="{{ field.html_name }}"
-                                                   {% if readonly %}readonly="readonly"{% endif %}
-                                                   value="{{ field.value|default_if_none:"" }}"
-                                                   id="{{ field.html_name }}"
-                                                   class="form-control form-control-lg"
-                                                   placeholder="{{ field.help_text }}"
-                                                    {% if field.field.required %}
-                                                   required {% endif %}>
-                                            <span class="help-inline">
-                                                    {% for error in field.errors %}
-                                                        {{ error }}
-                                                    {% endfor %}
-                                                </span>
-                                            <label class="form-label{% if form.field.field.required %} required{% endif %}"
-                                                   for="{{ field.html_name }}">
-                                                {{ field.label }}
-                                            </label>
-                                        </div>
+                                        {% show_input field %}
                                     {% endfor %}
 
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Login

@@ -1,0 +1,38 @@
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="row mt-2">
+        <div class="col-md-6">
+            {% show_input form.first_name %}
+        </div>
+        <div class="col-md-6">
+            {% show_input form.last_name %}
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-6">
+            {% show_input form.employee_id %}
+        </div>
+        <div class="col-md-6">
+            {% show_input form.mobile %}
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-6">
+            {% show_input form.position %}
+        </div>
+        <div class="col-md-6">
+            {% show_input form.start_date %}
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-1">
+            {% show_input form.salary_currency %}
+        </div>
+        <div class="col-md-5">
+            {% show_input form.salary %}
+        </div>
+    </div>
+    <div class="mt-5 text-center">
+        <button class="btn btn-success" type="submit">Save Employee</button>
+    </div>
+</form>

@@ -20,10 +20,14 @@ class Employee(TimeStampedModel):
         choices=EmployeePositionChoices.get_choices(),
         verbose_name='Position')
     salary = models.PositiveIntegerField(verbose_name='Salary')
-    salary_currency = models.CharField(max_length=10, verbose_name='Currency')
+    salary_currency = models.CharField(max_length=10, default='BGN',
+                                       verbose_name='Currency')
 
-    def get_full_name(self):
+    def get_full_name(self) -> str:
         return f'{self.first_name} {self.last_name}'
+
+    def get_salary(self) -> str:
+        return f'{self.salary_currency} {self.salary}'
 
     def __str__(self):
         return f'{self.get_full_name()} ({self.employee_id})'

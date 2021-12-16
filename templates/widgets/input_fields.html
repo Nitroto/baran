@@ -1,0 +1,94 @@
+{% if input_type == 'textinput' or input_type == 'emailinput' or input_type == 'passwordinput' or input_type == 'numberinput' %}
+    <div class="form-outline form-white mb-4">
+        <label class="form-label{% if required %} required{% endif %}"
+               for="{{ field.id_for_label }}">
+            {{ field.label }}
+        </label>
+        <div class="input-group">
+            <input type="{{ type }}" name="{{ field.html_name }}"
+                   {% if disabled %}disabled{% endif %}
+                   {% if readonly %}readonly{% endif %}
+                   value="{{ field.value|default_if_none:"" }}"
+                   id="{{ field.id_for_label }}"
+                   class="{{ class }}{% if field.errors %} is-invalid{% endif %}"
+                   placeholder="{{ field.help_text }}"
+                   {% if required %}required{% endif %}>
+
+            <div class="invalid-feedback">
+                {% for error in field.errors %}{{ error }}{% endfor %}
+            </div>
+        </div>
+    </div>
+{% elif type == 'select' %}
+    <div class="form-outline form-white mb-4">
+        {% if field.label %}
+            <label class="form-label{% if required %} required{% endif %}"
+                   for="{{ field.id_for_label }}">
+                {{ field.label }}
+            </label>
+        {% endif %}
+        <div class="input-group">
+            <select id="{{ field.id_for_label }}"
+                    class="form-select{% if field.errors %} is-invalid{% endif %}"
+                    name="{{ field.html_name }}"
+                    {% if disabled %} disabled {% endif %}
+                    {% if readonly %} disabled {% endif %}>
+                {% for value, text in field.field.choices %}
+                    {% if value %}
+                        <option value="{{ value }}"
+                                {% ifequal field.value|to_string value|to_string %}
+                                selected
+                                {% endifequal %}>
+                            {{ text }}
+                        </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <div class="invalid-feedback">
+                {% for error in field.errors %}{{ error }}{% endfor %}
+            </div>
+        </div>
+        {% if readonly %}
+            <input id="{{ field.id_for_label }}-{{ value }}"
+                   name="{{ field.html_name }}"
+                   type="hidden"
+                   value="{{ field.value }}">
+        {% endif %}
+    </div>
+{% elif input_type == 'dateinput' or input_type == 'date' %}
+    <div class="form-outline form-white mb-4">
+        <label class="form-label{% if required %} required{% endif %}"
+               for="{{ field.id_for_label }}">
+            {{ field.label }}
+        </label>
+        <div class="input-group date">
+            <span class="input-group-text input-group-addon"><i class="bi bi-calendar"></i></span>
+            <input id="{{ field.id_for_label }}"
+                   class="{{ class }} datepicker{% if field.errors %} is-invalid{% endif %}"
+                   {% if disabled %}disabled{% endif %}
+                   {% if readonly %}readonly{% endif %}
+                   type="{{ type }}"
+                   name="{{ field.html_name }}"
+                   value="{{ field.value|baran_date_format }}">
+
+            <div class="invalid-feedback">
+                {% for error in field.errors %}{{ error }}{% endfor %}
+            </div>
+        </div>
+    </div>
+{% elif input_type == 'hiddeninput' %}
+    <input type="{{ type }}"
+           id="{{ field.id_for_label }}"
+           name="{{ field.html_name }}"
+           value="{{ field.value|default_if_none:"" }}" />
+{% else %}
+    <p class="text-error">
+        Check your template code, no matching input type found! <strong>{{ input_type }}, {{ field.html_name }}</strong>
+    </p>
+    <p class="text-error"> Label attribute is "{{ field.label }}" </p>
+    <p>{{ field }} --- default output of field</p>
+    <p class="text-error"> {{ field.errors }} </p>
+{% endif %}
+
+

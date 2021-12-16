@@ -5,7 +5,7 @@
             <div class="row mb-5 ">
                 <div class="col-12">
                     <a href="{% url 'employee_create' %}" type="button" class="btn btn-success">
-                        <i class="bi bi-person-plus"></i> Create Employee
+                        <i class="bi bi-person-plus"></i> Add Employee
                     </a>
                 </div>
             </div>
@@ -28,9 +28,9 @@
                             <td>{{ employee.first_name }}</td>
                             <td>{{ employee.last_name }}</td>
                             <td>{{ employee.mobile }}</td>
-                            <td>{{ employee.start_date }}</td>
+                            <td>{{ employee.start_date|baran_date_format }}</td>
                             <td>{{ employee.get_position_display }}</td>
-                            <td>{{ employee.salary_currency }} {{ employee.salary }}</td>
+                            <td>{{ employee.get_salary }}</td>
                             <td>{{ employee.employee_id }}</td>
                         </tr>
                     {% endfor %}

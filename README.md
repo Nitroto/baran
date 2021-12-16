@@ -18,8 +18,7 @@
     >>> get_random_secret_key()
     ```
 - `DEBUG` - Default value False for Development environment should be True
-- `ALLOWED_HOSTS` - add allowed hosts, default is empty list
-  list. [Django documentation](https://docs.djangoproject.com/en/2.2/ref/settings/#allowed-hosts)
+- `ALLOWED_HOSTS` - add allowed hosts, default is empty list. [Django documentation](https://docs.djangoproject.com/en/2.2/ref/settings/#allowed-hosts)
 
 .env file can be used, put it in settings folder `baran/settings`
 
@@ -30,3 +29,5 @@ Backend Django server (port 8000):
 `$ make install-dev` - for install base and development dependencies  
 `$ make populate-db` - migrate, create demo user and import employees from xlsx file  
 `$ python manage.py runserver --settings=baran.settings.development` - run development server
+
+### [Demo application](https://simpleemployee.herokuapp.com/)

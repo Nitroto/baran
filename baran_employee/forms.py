@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 
 from .models import Employee
 
@@ -10,6 +11,8 @@ class BaseEmployeeForm(forms.ModelForm):
                   'position', 'salary', 'salary_currency', 'employee_id']
 
     lock_fields = list()
+    start_date = forms.DateField(label='Start date',
+                                 input_formats=settings.DATE_INPUT_FORMATS)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
