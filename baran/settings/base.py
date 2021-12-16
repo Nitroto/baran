@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third party apps
-    'rest_framework',
-    'rest_framework_swagger',
 
     # Baran apps
     'baran_account',
@@ -142,10 +140,6 @@ USER_SYSTEM_USERNAME = 'baran-system'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
-
-REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
-}
 
 
 class DisableMigrations(object):
