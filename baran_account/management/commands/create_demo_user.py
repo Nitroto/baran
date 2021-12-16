@@ -7,7 +7,7 @@ from ...models import BaranUser
 
 
 class Command(BaseCommand):
-    help = "Create initial supper user for application"
+    help = "Create initial demo user for application"
     DRY_RUN = False
 
     def handle(self, *args, **options):

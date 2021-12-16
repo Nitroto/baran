@@ -22,12 +22,21 @@ COL_EMPLOYEE_ID = 7
 
 class Command(BaseCommand):
     help = "Import xlsx table in database"
-    file_name = 'employee_data.xlsx'
+    FILE_NAME = 'employee_data.xlsx'
     DRY_RUN = False
     SALARY_PATTERN = '^(?P<currency>\\w{3})\\s(?P<salary>\\d+)$'
     DATE_FORMAT = '%d/%m/%Y'
 
+    def add_arguments(self, parser):
+        parser.add_argument('-f',
+                            '--file',
+                            action='store',
+                            type=str,
+                            default=self.FILE_NAME,
+                            help='Specify file name.')
+
     def handle(self, *args, **options):
+        self.file_name = options.get('file')
         with transaction.atomic():
             self.import_employees()
 

@@ -14,7 +14,7 @@ create-system-user:
 	python manage.py create_system_user
 import-employees-data:
 	python manage.py import_employees_data
-populate-db: migrate create-system-user import-employees-data
+populate-db: migrate create-demo-user import-employees-data
 
 install: install-base
 install-dev: install-development
