@@ -3,6 +3,13 @@ from .base import *
 SITE_HOST = 'http://localhost:8000'
 SHOW_API_ROOT = True
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT, 'baran.sqlite3'),
+    }
+}
+
 CORS_ORIGIN_WHITELIST = ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://0.0.0.0:8000']
 CSRF_TRUSTED_ORIGINS = ['localhost', '127.0.0.1', '0.0.0.0']
 
