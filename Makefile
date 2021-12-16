@@ -2,7 +2,6 @@ test: runflake
 	python manage.py test --settings=brana.settings.test
 runflake:
 	@flake8 ./ --exclude='*venv,*venv_*,**migrations*,*settings*,*flake8*,manage.py,wsgi.py,wsgi-beta.py,__init__.py,*node_modules*, *LC_MESSAGES*' --ignore=E125,W605,W503
-	
 install-base:
 	pip install -r ./requirements/base.txt
 install-development:
