@@ -1,5 +1,5 @@
 from baran_employee.forms import BaseEmployeeForm, UpdateEmployeeForm
-from config_modules.test_mixins import BaseTestForm
+from config_modules.test_config import BaseTestForm
 from .factories import EmployeeFactory
 from ..models import Employee
 

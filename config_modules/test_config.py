@@ -35,3 +35,22 @@ class BaseTestForm(TestCase):
 
     def get_form_kwargs(self, **kwargs):
         return {}
+
+
+class BaseTestView(TestCase):
+    def get_url(self):
+        raise NotImplementedError
+
+    def make_get_request(self):
+        return self.client.get(self.get_url())
+
+    def make_post_request(self, data):
+        return self.client.post(self.get_url(), data=data)
+
+
+class BaseTestWithUserMixin:
+    user_factory = None
+
+    def setUp(self):
+        self.user = self.user_factory()
+        self.client.force_login(self.user)
