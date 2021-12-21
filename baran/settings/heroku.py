@@ -11,6 +11,3 @@ DATABASES = {
 MIDDLEWARE += ('whitenoise.middleware.WhiteNoiseMiddleware',)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-CORS_ORIGIN_WHITELIST = []
-CSRF_TRUSTED_ORIGINS = ['simpleemployee.herokuapp.com']

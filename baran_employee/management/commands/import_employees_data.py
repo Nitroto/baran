@@ -117,5 +117,5 @@ class Command(BaseCommand):
         }
 
     def _get_position(self, position_title) -> int:
-        return dict((v, k) for k, v in EmployeePositionChoices.get_choices()) \
+        return dict((v, k) for k, v in EmployeePositionChoices.choices) \
             .get(position_title)

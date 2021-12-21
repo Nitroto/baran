@@ -36,9 +36,9 @@
                 {% for value, text in field.field.choices %}
                     {% if value %}
                         <option value="{{ value }}"
-                                {% ifequal field.value|to_string value|to_string %}
+                                {% if field.value|to_string == value|to_string %}
                                 selected
-                                {% endifequal %}>
+                                {% endif %}>
                             {{ text }}
                         </option>
                     {% endif %}

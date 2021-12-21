@@ -17,7 +17,7 @@ class Employee(TimeStampedModel):
                               verbose_name='Mobile')
     start_date = models.DateField(verbose_name='Start date')
     position = models.PositiveSmallIntegerField(
-        choices=EmployeePositionChoices.get_choices(),
+        choices=EmployeePositionChoices.choices,
         verbose_name='Position')
     salary = models.PositiveIntegerField(verbose_name='Salary')
     salary_currency = models.CharField(max_length=10, default='BGN',

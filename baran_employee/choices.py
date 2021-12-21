@@ -1,16 +1,10 @@
-class EmployeePositionChoices:
-    JUNIOR_DEVELOPER = 1
-    SENIOR_DEVELOPER = 2
-    TEAM_LEAD = 3
-    PROJECT_MANAGER = 4
-    CEO = 5
+from django.db.models import IntegerChoices
+from django.utils.translation import gettext_lazy as _
 
-    @classmethod
-    def get_choices(cls):
-        return (
-            (cls.JUNIOR_DEVELOPER, 'Junior Developer'),
-            (cls.SENIOR_DEVELOPER, 'Senior Developer'),
-            (cls.TEAM_LEAD, 'Team Lead'),
-            (cls.PROJECT_MANAGER, 'Project Manager'),
-            (cls.CEO, 'CEO'),
-        )
+
+class EmployeePositionChoices(IntegerChoices):
+    JUNIOR_DEVELOPER = 1, _('Junior Developer')
+    SENIOR_DEVELOPER = 2, _('Senior Developer')
+    TEAM_LEAD = 3, _('Team Lead')
+    PROJECT_MANAGER = 4, _('Project Manager')
+    CEO = 5, _('CEO')

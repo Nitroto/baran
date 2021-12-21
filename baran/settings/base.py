@@ -138,28 +138,11 @@ STATICFILES_FINDERS = [
 AUTH_USER_MODEL = 'baran_account.BaranUser'
 USER_SYSTEM_USERNAME = 'baran-system'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-
-
-class DisableMigrations(object):
-    """
-    Wrapper to be used with MIGRATION_MODULES to disable all migrations
-    Disable Migrations using MIGRATION_MODULES = DisableMigrations()
-    """
-
-    # Inspired by this fix
-    # https://github.com/henriquebastos/django-test-without-migrations/
-    # blob/master/test_without_migrations/management/commands/_base.py
-    def __contains__(self, item):
-        return True
-
-    def __getitem__(self, item):
-        # django 1.9 takes None, 1.7/8 has an error here, so use a dummy value
-        # 1.11+ always actually imports the module, so we can't use the dummy there
-        # DB: Just return None as we are passed version 1.9
-        return None

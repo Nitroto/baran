@@ -7,7 +7,7 @@ from config_modules.faker_config import fake_boy
 from ..choices import EmployeePositionChoices
 from ..models import Employee
 
-EMPLOYEE_POSITIONS_IDS = [x[0] for x in EmployeePositionChoices.get_choices()]
+EMPLOYEE_POSITIONS_IDS = [x[0] for x in EmployeePositionChoices.choices]
 
 
 class EmployeeFactory(DjangoModelFactory):

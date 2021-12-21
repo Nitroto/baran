@@ -1,11 +1,13 @@
 from .base import *
 
-MIGRATION_MODULES = DisableMigrations()
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_ROOT, 'test.sqlite3'),
+        'TEST': {
+            # Don't test migrations New in Django 3.1.
+            'MIGRATE': False,
+        },
     }
 }
 
