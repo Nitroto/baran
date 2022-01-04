@@ -4,8 +4,8 @@
 
 ### Backend
 
-- [Python 3.9](https://www.python.org/)
-- [Django 2.2.25](https://www.djangoproject.com/)
+- [Python 3.10](https://www.python.org/)
+- [Django 4.0.1](https://www.djangoproject.com/)
 
 ## Instructions
 
