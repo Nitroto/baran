@@ -5,7 +5,7 @@
 ### Backend
 
 - [Python 3.10](https://www.python.org/)
-- [Django 4.0.1](https://www.djangoproject.com/)
+- [Django 4.1.2](https://www.djangoproject.com/)
 
 ## Instructions
 
@@ -18,7 +18,7 @@
     >>> get_random_secret_key()
     ```
 - `DEBUG` - Default value False for Development environment should be True
-- `ALLOWED_HOSTS` - add allowed hosts, default is empty list. [Django documentation](https://docs.djangoproject.com/en/2.2/ref/settings/#allowed-hosts)
+- `ALLOWED_HOSTS` - add allowed hosts, default is empty list. [Django documentation](https://docs.djangoproject.com/en/4.1/ref/settings/#allowed-hosts)
 
 .env file can be used, put it in settings folder `baran/settings`
 

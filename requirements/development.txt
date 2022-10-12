@@ -2,5 +2,5 @@
 
 ipython
 factory-boy==3.2.1
-Faker==11.1.0
-flake8==4.0.1
+Faker==15.1.0
+flake8==5.0.4
